@@ -1,6 +1,6 @@
 import {ship} from "./ship.js"
 function Gameboard(){
-
+    let numberSunk = 0;
     let board = [[true,true,true,true,true,true,true,true,true,true],
                  [true,true,true,true,true,true,true,true,true,true],
                  [true,true,true,true,true,true,true,true,true,true],
@@ -21,7 +21,7 @@ function Gameboard(){
             if(checkSlots(x,y,shipObject.getLength(),horizontalOrientation)){
                 
                 for(let i = 0; i < shipObject.getLength() ; i++){
-                    board[x][y] = false;
+                    board[x][y] = shipObject;
                     y++;
                  }
                 return board;
@@ -34,7 +34,7 @@ function Gameboard(){
             if(checkSlots(x,y,shipObject.getLength(),horizontalOrientation)){
                 
                 for(let i = 0; i < shipObject.getLength(); i++){
-                    board[x][y] = false;
+                    board[x][y] = shipObject;
                     x++;
                  }
                 return board;
@@ -74,16 +74,26 @@ function Gameboard(){
 
 
     let attack;
-    function receiveAttack(x,y){
-        if(!(board[x][y])){
-            board[x][y] = "hit"
+    function receiveAttack(shipObject,x,y){
+        if(board[x][y] == shipObject){ //board[x][y] instanceof ship
+            shipObject.hit()
+            board[x][y] = "hit";
+            if(shipObject.hasSunk()){
+                numberSunk++;
+            }
+              
+            
         }
         else{
             board[x][y] = "missed"
+           
         }
         return board;
     }
 
+    function checkAllShipsSunk(){
+        return numberSunk == 5;
+    }
 
     return {setShip, receiveAttack};
 }
