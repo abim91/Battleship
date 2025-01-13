@@ -161,3 +161,30 @@ test("update board for horizontal orientation",()=>{
 
 
 })
+
+//place something in the grid, them attack each of the coordinate
+test("Test if a boat is hit by the missle",()=>{
+    let expectedBoard = [["hit","hit","hit","hit","hit",true,true,true,true,true],
+    ["missed",true,true,true,true,true,true,true,true,true],
+    [true,true,true,true,true,true,true,true,true,true],
+    [true,true,true,true,true,true,true,true,true,true],
+    [true,true,true,true,true,true,true,true,true,true],
+    [true,true,true,true,true,true,true,true,true,true],
+    [true,true,true,true,true,true,true,true,true,true],
+    [true,true,true,true,true,true,true,true,true,true],
+    [true,true,true,true,true,true,true,true,true,true],
+    [true,true,true,true,true,true,true,true,true,true]
+   ]
+    let battleShip = ship();
+    battleShip.setLength(5);
+
+    let gb = Gameboard();
+    gb.setShip(battleShip,0,0,true);
+    gb.receiveAttack(0,1);
+    gb.receiveAttack(0,2);
+    gb.receiveAttack(0,3);
+    gb.receiveAttack(0,4);
+    gb.receiveAttack(1,0)
+    expect(gb.receiveAttack(0,0)).toEqual(expectedBoard);
+
+})

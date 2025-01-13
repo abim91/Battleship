@@ -46,7 +46,7 @@ function Gameboard(){
 
     function checkSlots(x,y,length,horizontalOrientation){
         if(horizontalOrientation){
-            //7,1
+            
             for(let i = 0; i < length ; i++){ 
                 if(y > 10){
                     return false;
@@ -74,17 +74,18 @@ function Gameboard(){
 
 
     let attack;
-    const receiveAttack = function(x,y){
-        if(x && y){
-            attack = true;
+    function receiveAttack(x,y){
+        if(!(board[x][y])){
+            board[x][y] = "hit"
         }
         else{
-            attack = false;
+            board[x][y] = "missed"
         }
+        return board;
     }
 
 
-    return {setShip};
+    return {setShip, receiveAttack};
 }
 
 export {Gameboard}
