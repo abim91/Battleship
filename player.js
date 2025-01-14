@@ -1,9 +1,5 @@
-import { Gameboard } from "./Gameboard"
+import { Gameboard } from "./Gameboard";
 
-function realPlayer(){
-    const PlayerGB =  Gameboard();
-}
-
-function computer(){
-    const computerGB = Gameboard();
+function Player() {
+  gameboard = Gameboard();
 }
