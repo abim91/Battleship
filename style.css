@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "pingpong";
+  src: url("./assets/fonts/PINGPONG.TTF") format("truetype");
+}
+
+body {
+  font-family:
+    "pingpong",
+    Gill Sans;
+  background-color: #baa917;
+}
+
+#title {
+  font-size: 20vh;
+  text-align: center;
+  color:black;
+}
+header {
+  text-align: right;
+}
+#startGame {
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  font-size: 6vh;
+  color:white;
+}
+
+header {
+  font-size: 6.5vh;
+}

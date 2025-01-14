@@ -72,6 +72,12 @@ function Gameboard() {
       shipObject.hit();
       board[x][y] = "hit";
       if (shipObject.hasSunk()) {
+
+
+
+
+
+        
         numberSunk++;
       }
     } else {
@@ -82,7 +88,12 @@ function Gameboard() {
 
   function checkAllShipsSunk() {
     return numberSunk == 5;
+    
   }
+
+
+
+
 
   return { setShip, receiveAttack };
 }
